@@ -73,16 +73,36 @@
   document.querySelectorAll('[data-portfolio-card]').forEach((card) => {
     const slides = [...card.querySelectorAll('[data-slide]')];
     const count = card.querySelector('[data-slide-count]');
+    const frame = card.querySelector('.portfolio-slide-frame');
     let active = 0;
+    let startX = 0;
+    let tracking = false;
+
+    function goTo(step) {
+      slides[active].hidden = true;
+      active = (active + step + slides.length) % slides.length;
+      slides[active].hidden = false;
+      count.textContent = `${active + 1} / ${slides.length}`;
+    }
 
     card.querySelectorAll('[data-slide-step]').forEach((button) => {
-      button.addEventListener('click', () => {
-        slides[active].hidden = true;
-        active = (active + Number(button.dataset.slideStep) + slides.length) % slides.length;
-        slides[active].hidden = false;
-        count.textContent = `${active + 1} / ${slides.length}`;
-      });
+      button.addEventListener('click', () => goTo(Number(button.dataset.slideStep)));
     });
+
+    if (!frame) return;
+    frame.addEventListener('pointerdown', (event) => {
+      tracking = true;
+      startX = event.clientX;
+    });
+    frame.addEventListener('pointerup', (event) => {
+      if (!tracking) return;
+      tracking = false;
+      const delta = event.clientX - startX;
+      if (Math.abs(delta) < 40) return;
+      goTo(delta < 0 ? 1 : -1);
+    });
+    frame.addEventListener('pointercancel', () => { tracking = false; });
+    frame.style.touchAction = 'pan-y';
   });
 
   const menu = document.getElementById('mainNav');
