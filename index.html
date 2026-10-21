@@ -50,16 +50,22 @@
             <ul class="hero-benefits" aria-label="Como trabalhamos"><li><i class="bi bi-check2-circle" aria-hidden="true"></i>Conteúdo personalizado</li><li><i class="bi bi-check2-circle" aria-hidden="true"></i>Design consistente</li><li><i class="bi bi-check2-circle" aria-hidden="true"></i>Entrega organizada</li></ul>
           </div>
           <div class="col-lg-6">
-            <div class="hero-collage" aria-label="Exemplos conceituais de carrosséis para Instagram">
-              <article class="hero-carousel-card hero-card-back hero-card-one" aria-label="Exemplo conceitual: carrossel sobre identidade de marca">
-                <div class="social-card social-card-orange"><span class="social-card-brand">entre linhas <i class="bi bi-asterisk" aria-hidden="true"></i></span><span class="social-card-kicker">IDEIA EM FOCO · 01</span><h2>Uma marca<br>que fica na<br><em>memória.</em></h2><span class="social-card-footer">DESLIZE PARA VER <b>→</b></span></div>
-              </article>
-              <article class="hero-carousel-card hero-card-back hero-card-two" aria-label="Exemplo conceitual: carrossel com dicas de comunicação">
-                <div class="social-card social-card-yellow"><span class="social-card-brand">entre linhas <i class="bi bi-asterisk" aria-hidden="true"></i></span><span class="social-card-kicker">CONTEÚDO QUE CONECTA · 02</span><h2>3 jeitos de<br>deixar sua ideia<br><em>mais clara.</em></h2><span class="social-card-footer">DESLIZE PARA VER <b>→</b></span></div>
-              </article>
-              <article class="hero-carousel-card hero-card-front">
-                <div class="social-card social-card-dark"><span class="social-card-brand">entre linhas <i class="bi bi-asterisk" aria-hidden="true"></i></span><span class="social-card-kicker">CARROSSEL CONCEITUAL · 03</span><h2>Sua ideia<br>merece boas<br><em>entrelinhas.</em></h2><span class="social-card-footer">01 — 05 <span class="social-dots"><i></i><i></i><i></i></span><b>→</b></span></div>
-              </article>
+            <div class="hero-slider" role="group" aria-label="Exemplos conceituais de carrosséis para Instagram">
+              <input class="hero-slider-toggle" type="radio" name="hero-slider" id="heroSlide1" checked>
+              <input class="hero-slider-toggle" type="radio" name="hero-slider" id="heroSlide2">
+              <input class="hero-slider-toggle" type="radio" name="hero-slider" id="heroSlide3">
+              <div class="hero-card-deck">
+                <div class="hero-slider-viewport">
+                  <article class="hero-slide"><div class="social-card social-card-orange"><span class="social-card-brand">entre linhas <i class="bi bi-asterisk" aria-hidden="true"></i></span><span class="social-card-kicker">IDEIA EM FOCO · 01</span><h2>Uma marca<br>que fica na<br><em>memória.</em></h2><span class="social-card-footer">DESLIZE PARA VER <b>→</b></span></div></article>
+                  <article class="hero-slide"><div class="social-card social-card-yellow"><span class="social-card-brand">entre linhas <i class="bi bi-asterisk" aria-hidden="true"></i></span><span class="social-card-kicker">CONTEÚDO QUE CONECTA · 02</span><h2>3 jeitos de<br>deixar sua ideia<br><em>mais clara.</em></h2><span class="social-card-footer">DESLIZE PARA VER <b>→</b></span></div></article>
+                  <article class="hero-slide"><div class="social-card social-card-dark"><span class="social-card-brand">entre linhas <i class="bi bi-asterisk" aria-hidden="true"></i></span><span class="social-card-kicker">CARROSSEL CONCEITUAL · 03</span><h2>Sua ideia<br>merece boas<br><em>entrelinhas.</em></h2><span class="social-card-footer">01 — 05 <b>→</b></span></div></article>
+                </div>
+              </div>
+              <div class="hero-slider-controls" role="group" aria-label="Escolha um exemplo de carrossel">
+                <label for="heroSlide1"><span class="visually-hidden">Mostrar exemplo 1</span></label>
+                <label for="heroSlide2"><span class="visually-hidden">Mostrar exemplo 2</span></label>
+                <label for="heroSlide3"><span class="visually-hidden">Mostrar exemplo 3</span></label>
+              </div>
             </div>
           </div>
         </div>
