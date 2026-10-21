@@ -46,6 +46,23 @@
 @media(prefers-reduced-motion:reduce){.hero-slide{transition:none}}
 .hero-slide .social-card{border-radius:16px;box-shadow:0 24px 48px rgba(45,45,45,.22)}.hero-slider-controls label{width:11px;height:11px}
 
+@property --pos{syntax:"<number>";inherits:false;initial-value:0}
+@property --depth{syntax:"<number>";inherits:false;initial-value:0}
+@keyframes fan-cycle{
+  0%,28%{--pos:0;--depth:0}
+  33.333%,61%{--pos:-1;--depth:1}
+  66.667%,94%{--pos:1;--depth:1}
+  100%{--pos:0;--depth:0}
+}
+#heroSlide1:checked~.hero-card-deck{--fan-shift:0s}
+#heroSlide2:checked~.hero-card-deck{--fan-shift:-5s}
+#heroSlide3:checked~.hero-card-deck{--fan-shift:-10s}
+@media(prefers-reduced-motion:no-preference){
+  .hero-card-deck .hero-slide{animation:fan-cycle 15s cubic-bezier(.22,.9,.3,1) infinite}
+  .hero-card-deck .hero-slide:nth-child(2){animation-delay:calc(var(--fan-shift,0s) - 10s)}
+  .hero-card-deck .hero-slide:nth-child(3){animation-delay:calc(var(--fan-shift,0s) - 5s)}
+}
+
 html,body{width:100%;max-width:100%;overflow-x:hidden}
 img,svg,video{max-width:100%;height:auto}
 .site-header{padding-top:env(safe-area-inset-top)}
