@@ -82,6 +82,7 @@
       slides[active].hidden = true;
       active = (active + step + slides.length) % slides.length;
       slides[active].hidden = false;
+      slides.forEach((slide, index) => slide.setAttribute('aria-label', `Slide ${index + 1} de ${slides.length}`));
       count.textContent = `${active + 1} / ${slides.length}`;
     }
 
