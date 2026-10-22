@@ -133,7 +133,8 @@ img,svg,video{max-width:100%;height:auto}
 
 
 /* Cards de planos mensais */
-.plan-card{min-height:100%;padding:2rem 1.75rem;border-color:var(--border);box-shadow:0 12px 32px rgba(45,45,45,.035)}
+.plan-card{min-height:100%;padding:2rem 1.75rem;border-color:var(--border);box-shadow:0 14px 34px rgba(45,45,45,.07)}
+.plan-card-recommended{border:2px solid var(--orange);box-shadow:0 16px 38px rgba(255,117,31,.16)}
 .plan-card h3{max-width:none;margin:.2rem 0 .5rem;font-size:1.35rem}
 .plan-label{align-self:flex-start;margin-bottom:.65rem;color:var(--orange-text);font-size:.7rem;font-weight:800;letter-spacing:.13em}
 .plan-description{min-height:3.2em;margin:0 0 1.25rem!important;color:var(--text-muted);font-size:.9rem!important;line-height:1.6}
