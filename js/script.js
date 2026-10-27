@@ -106,6 +106,50 @@
     frame.style.touchAction = 'pan-y';
   });
 
+  const heroCarousel = document.querySelector('[data-hero-carousel]');
+  if (heroCarousel) {
+    const slides = [...heroCarousel.querySelectorAll('.hero-slide')];
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let activeSlide = Number(heroCarousel.dataset.activeSlide) || 0;
+    let rotationTimer;
+
+    function showNextSlide(direction = 1) {
+      activeSlide = (activeSlide + direction + slides.length) % slides.length;
+      heroCarousel.dataset.activeSlide = String(activeSlide);
+    }
+
+    function stopRotation() {
+      window.clearInterval(rotationTimer);
+      rotationTimer = undefined;
+    }
+
+    function startRotation() {
+      if (rotationTimer || reducedMotion.matches || document.hidden) return;
+      rotationTimer = window.setInterval(() => showNextSlide(), 7500);
+    }
+
+    heroCarousel.addEventListener('mouseenter', stopRotation);
+    heroCarousel.addEventListener('mouseleave', startRotation);
+    heroCarousel.addEventListener('focusin', stopRotation);
+    heroCarousel.addEventListener('focusout', (event) => {
+      if (!heroCarousel.contains(event.relatedTarget)) startRotation();
+    });
+    heroCarousel.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+      event.preventDefault();
+      showNextSlide(event.key === 'ArrowRight' ? 1 : -1);
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stopRotation();
+      else startRotation();
+    });
+    reducedMotion.addEventListener?.('change', () => {
+      if (reducedMotion.matches) stopRotation();
+      else startRotation();
+    });
+    startRotation();
+  }
+
   const menu = document.getElementById('mainNav');
   document.querySelectorAll('#mainNav a[href^="#"]').forEach((link) => {
     link.addEventListener('click', () => {
